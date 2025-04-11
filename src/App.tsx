@@ -23,7 +23,7 @@ function App() {
       }
     };
     scrollDown();
-  }, []);
+  }, [finished]);
 
   document.addEventListener("scroll", () => {
     console.log("aparezco scroll");

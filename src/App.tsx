@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import BackgroundMusic from "./backgroundMusic";
 import Galeria from "./galeria";
 

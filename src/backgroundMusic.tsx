@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const BackgroundMusic = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
     // Opcional: reproducir automáticamente si el navegador lo permite
-    const audio = audioRef.current;
+    const audio:any = audioRef.current;
     if (audio) {
       audio.loop = true;
 
       // Muchos navegadores requieren interacción del usuario
       const playMusic = () => {
-        audio.play().catch((e) => {
+        audio.play().catch(() => {
           console.log(
             "Autoplay bloqueado, se necesita interacción del usuario"
           );

@@ -10,11 +10,9 @@ function App() {
       if (!finished) {
         window.scrollTo(0, y);
         y += 1;
-        console.log("Y:", y)
-        console.log("Scroll height:",document.body.scrollHeight)
-        console.log("Client height:",document.body.clientHeight)
-        console.log("Scroll Top:",document.body.scrollTop)
-        console.log("Client height:",document.body.clientHeight)
+        const main = document.getElementById("main");
+        console.log("Y:", y);
+        console.log("main height", main?.scrollHeight);
         if (y < document.body.scrollHeight) {
           requestAnimationFrame(scrollDown);
         } else {
@@ -26,7 +24,10 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 md:px-48 lg:px-96">
+    <div
+      className="flex flex-col items-center justify-center bg-gray-100 md:px-48 lg:px-96"
+      id="main"
+    >
       <BackgroundMusic />
       <div className="flex flex-col items-center justify-center h-full w-full">
         <LazyLoadImage

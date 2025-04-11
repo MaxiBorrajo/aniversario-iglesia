@@ -8,29 +8,44 @@ function App() {
     let animationId: number;
     let cancelled = false;
 
-    const scrollDown = () => {
-      if (cancelled) return;
-      y += 0.8;
-      window.scrollTo(0, y);
-      if (y < document.body.scrollHeight) {
-        animationId = requestAnimationFrame(scrollDown);
+    const cancelScroll = () => {
+      if (!cancelled) {
+        cancelled = true;
+        cancelAnimationFrame(animationId);
+        // Remover listeners
+        window.removeEventListener("wheel", cancelScroll);
+        window.removeEventListener("touchstart", cancelScroll);
+        window.removeEventListener("mousedown", cancelScroll);
       }
     };
 
-    const cancelScroll = () => {
-      cancelled = true;
-      cancelAnimationFrame(animationId);
-      // Limpia los listeners después de cancelar
-      window.removeEventListener("scroll", cancelScroll);
+    const scrollDown = () => {
+      if (cancelled) return;
+
+      y += 0.5;
+      window.scrollTo(0, y);
+
+      // Detectar si se llegó al final de la página
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const pageHeight = document.body.scrollHeight;
+
+      if (scrollBottom >= pageHeight) {
+        cancelScroll();
+        return;
+      }
+
+      animationId = requestAnimationFrame(scrollDown);
     };
 
     // Escuchar interacción del usuario
-    window.addEventListener("scroll", cancelScroll, { once: true });
+    window.addEventListener("wheel", cancelScroll, { passive: true });
+    window.addEventListener("touchstart", cancelScroll, { passive: true });
+    window.addEventListener("mousedown", cancelScroll);
 
     scrollDown();
 
     return () => {
-      cancelScroll(); // Por si se desmonta el componente antes
+      cancelScroll();
     };
   }, []);
 

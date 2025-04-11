@@ -25,24 +25,24 @@ function App() {
           className="h-full w-full object-cover"
         />
       </div>
-      <div className="flex flex-col items-center justify-center h-full w-full p-4 gap-6 bg-white">
+      <div className="flex flex-col items-center justify-center w-full p-4 gap-6 bg-white h-full">
         <div className="rounded-xl overflow-hidden -rotate-2">
           <LazyLoadImage
-            src="/public/img3.jpg"
+            src="/img3.jpg"
             alt="iglesia"
             className="h-full w-full object-cover"
           />
         </div>
         <div className="rounded-xl overflow-hidden rotate-2">
           <LazyLoadImage
-            src="/public/img1.jpg"
+            src="/img1.jpg"
             alt="iglesia"
             className="h-full w-full object-cover"
           />
         </div>
         <div className="rounded-xl overflow-hidden -rotate-2">
           <LazyLoadImage
-            src="/public/img2.jpg"
+            src="/img2.jpg"
             alt="iglesia"
             className="h-full w-full object-cover"
           />

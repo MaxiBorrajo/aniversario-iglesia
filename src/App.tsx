@@ -21,7 +21,7 @@ function App() {
       }
     };
     scrollDown();
-  }, []);
+  }, [document.body.scrollHeight]);
 
   return (
     <div

@@ -10,11 +10,8 @@ function App() {
       if (!finished) {
         window.scrollTo(0, y);
         y += 1;
-        console.log(document.body.scrollHeight)
-        console.log(window.innerHeight)
-        const final = document.body.scrollHeight - window.innerHeight;
-        console.log("Y: ", y);
-        console.log("final: ", final);
+        const final = document.body.scrollHeight > window.innerHeight ?  document.body.scrollHeight - window.innerHeight : document.body.scrollHeight;
+        
         if (y < final) {
           requestAnimationFrame(scrollDown);
         } else {

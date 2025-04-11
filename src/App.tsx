@@ -5,14 +5,37 @@ import { useEffect } from "react";
 function App() {
   useEffect(() => {
     let y = 0;
+    let animationId: number;
+    let cancelled = false;
+
     const scrollDown = () => {
-      y += 0.5;
+      if (cancelled) return;
+      y += 0.8;
       window.scrollTo(0, y);
       if (y < document.body.scrollHeight) {
-        requestAnimationFrame(scrollDown);
+        animationId = requestAnimationFrame(scrollDown);
       }
     };
+
+    const cancelScroll = () => {
+      cancelled = true;
+      cancelAnimationFrame(animationId);
+      // Limpia los listeners después de cancelar
+      window.removeEventListener("scroll", cancelScroll);
+      window.removeEventListener("click", cancelScroll);
+      window.removeEventListener("touchstart", cancelScroll);
+    };
+
+    // Escuchar interacción del usuario
+    window.addEventListener("scroll", cancelScroll, { once: true });
+    window.addEventListener("click", cancelScroll, { once: true });
+    window.addEventListener("touchstart", cancelScroll, { once: true });
+
     scrollDown();
+
+    return () => {
+      cancelScroll(); // Por si se desmonta el componente antes
+    };
   }, []);
 
   return (

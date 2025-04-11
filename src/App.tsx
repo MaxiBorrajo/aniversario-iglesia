@@ -10,7 +10,7 @@ function App() {
       if (!finished) {
         window.scrollTo(0, y);
         y += 1;
-        if (y < document.body.scrollHeight - 50) {
+        if (y < document.body.scrollHeight - 300) {
           requestAnimationFrame(scrollDown);
         } else {
           setFinished(true);

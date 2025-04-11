@@ -1,55 +1,24 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import BackgroundMusic from "./backgroundMusic";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [finished, setFinished] = useState(false);
   useEffect(() => {
     let y = 0;
-    let animationId: number;
-    let cancelled = false;
-
-    const cancelScroll = () => {
-      if (!cancelled) {
-        cancelled = true;
-        cancelAnimationFrame(animationId);
-        window.removeEventListener("wheel", cancelScroll);
-        window.removeEventListener("touchstart", cancelScroll);
-        window.removeEventListener("mousedown", cancelScroll);
-        console.log("Scroll cancelado por el usuario o fin de página.");
-      }
-    };
-
     const scrollDown = () => {
-      if (cancelled) return;
-
-      y += 0.5;
-      window.scrollTo(0, y);
-
-      const scrollBottom = window.scrollY + window.innerHeight;
-      const pageHeight = document.body.scrollHeight;
-
-      if (scrollBottom >= pageHeight) {
-        cancelScroll();
-        return;
+      if (!finished) {
+        window.scrollTo(0, y);
+        y += 1;
+        if (y < document.body.scrollHeight) {
+          requestAnimationFrame(scrollDown);
+        } else {
+          setFinished(true);
+        }
       }
-
-      animationId = requestAnimationFrame(scrollDown);
     };
-
-    // Esperar un poco para asegurarse de que el DOM cargó
-    const startTimeout = setTimeout(() => {
-      scrollDown();
-    }, 300); // 300ms
-
-    window.addEventListener("wheel", cancelScroll, { passive: true });
-    window.addEventListener("touchstart", cancelScroll, { passive: true });
-    window.addEventListener("mousedown", cancelScroll);
-
-    return () => {
-      cancelScroll();
-      clearTimeout(startTimeout);
-    };
-  }, []);
+    scrollDown();
+  }, [finished]);
 
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100 md:px-48 lg:px-96">

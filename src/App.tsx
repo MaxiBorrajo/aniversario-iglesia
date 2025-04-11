@@ -22,14 +22,10 @@ function App() {
       cancelAnimationFrame(animationId);
       // Limpia los listeners después de cancelar
       window.removeEventListener("scroll", cancelScroll);
-      window.removeEventListener("click", cancelScroll);
-      window.removeEventListener("touchstart", cancelScroll);
     };
 
     // Escuchar interacción del usuario
     window.addEventListener("scroll", cancelScroll, { once: true });
-    window.addEventListener("click", cancelScroll, { once: true });
-    window.addEventListener("touchstart", cancelScroll, { once: true });
 
     scrollDown();
 

@@ -13,6 +13,7 @@ function App() {
         console.log("Y: ", y);
         console.log("window: ", window.innerHeight);
         console.log("window outer: ", window.outerHeight)
+        console.log("document: ", document.body.scrollHeight)
         if (y < document.body.scrollHeight) {
           requestAnimationFrame(scrollDown);
         } else {

@@ -12,10 +12,10 @@ function App() {
       if (!cancelled) {
         cancelled = true;
         cancelAnimationFrame(animationId);
-        // Remover listeners
         window.removeEventListener("wheel", cancelScroll);
         window.removeEventListener("touchstart", cancelScroll);
         window.removeEventListener("mousedown", cancelScroll);
+        console.log("Scroll cancelado por el usuario o fin de página.");
       }
     };
 
@@ -25,8 +25,7 @@ function App() {
       y += 0.5;
       window.scrollTo(0, y);
 
-      // Detectar si se llegó al final de la página
-      const scrollBottom = window.innerHeight + window.scrollY;
+      const scrollBottom = window.scrollY + window.innerHeight;
       const pageHeight = document.body.scrollHeight;
 
       if (scrollBottom >= pageHeight) {
@@ -37,15 +36,18 @@ function App() {
       animationId = requestAnimationFrame(scrollDown);
     };
 
-    // Escuchar interacción del usuario
+    // Esperar un poco para asegurarse de que el DOM cargó
+    const startTimeout = setTimeout(() => {
+      scrollDown();
+    }, 300); // 300ms
+
     window.addEventListener("wheel", cancelScroll, { passive: true });
     window.addEventListener("touchstart", cancelScroll, { passive: true });
     window.addEventListener("mousedown", cancelScroll);
 
-    scrollDown();
-
     return () => {
       cancelScroll();
+      clearTimeout(startTimeout);
     };
   }, []);
 

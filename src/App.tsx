@@ -10,7 +10,7 @@ function App() {
       if (!finished) {
         window.scrollTo(0, y);
         y += 1;
-        if (y < document.body.scrollHeight - 500) {
+        if (y < document.body.scrollHeight) {
           requestAnimationFrame(scrollDown);
         } else {
           setFinished(() => true);
@@ -18,7 +18,7 @@ function App() {
       }
     };
     scrollDown();
-  }, [finished]);
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100 md:px-48 lg:px-96">

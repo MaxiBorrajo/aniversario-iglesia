@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Galeria = () => {
   const ref = useRef(null);
@@ -24,7 +25,7 @@ const Galeria = () => {
           transition={{ duration: 0.8, delay: index * 1 }}
           className={`rounded-xl overflow-hidden ${foto.rotate}`}
         >
-          <img
+          <LazyLoadImage
             src={foto.src}
             alt="iglesia"
             className="h-full w-full object-cover"

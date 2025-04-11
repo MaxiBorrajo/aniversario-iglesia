@@ -27,7 +27,7 @@ const BackgroundMusic = () => {
 
   return (
     <audio ref={audioRef}>
-      <source src="/public/musica.mp3" type="audio/mpeg" />
+      <source src="/musica.mp3" type="audio/mpeg" />
       Tu navegador no soporta audio.
     </audio>
   );

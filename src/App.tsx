@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import BackgroundMusic from "./backgroundMusic";
 import Galeria from "./galeria";
 
@@ -15,10 +16,10 @@ function App() {
   // }, []);
 
   return (
-    <div className="w-screen flex flex-col items-center justify-center bg-gray-100 p-0 m-0 md:px-48 lg:px-96">
+    <div className="flex flex-col items-center justify-center bg-gray-100 md:px-48 lg:px-96">
       <BackgroundMusic />
       <div className="flex flex-col items-center justify-center h-full w-full">
-        <img
+        <LazyLoadImage
           src="/1.png"
           alt="iglesia"
           className="h-full w-full object-cover"
@@ -26,21 +27,21 @@ function App() {
       </div>
       {/* <div className="flex flex-col items-center justify-center h-full w-full p-4 gap-6 bg-white">
         <div className="rounded-xl overflow-hidden -rotate-2">
-          <img
+          <LazyLoadImage
             src="/public/img3.jpg"
             alt="iglesia"
             className="h-full w-full object-cover"
           />
         </div>
         <div className="rounded-xl overflow-hidden rotate-2">
-          <img
+          <LazyLoadImage
             src="/public/img1.jpg"
             alt="iglesia"
             className="h-full w-full object-cover"
           />
         </div>
         <div className="rounded-xl overflow-hidden -rotate-2">
-          <img
+          <LazyLoadImage
             src="/public/img2.jpg"
             alt="iglesia"
             className="h-full w-full object-cover"
@@ -49,14 +50,14 @@ function App() {
       </div> */}
       <Galeria />
       <div className="flex flex-col items-center justify-center h-full w-full">
-        <img
+        <LazyLoadImage
           src="/3.png"
           alt="iglesia"
           className="h-full w-full object-cover"
         />
       </div>
       <div className="flex flex-col items-center justify-center h-full w-full">
-        <img
+        <LazyLoadImage
           src="/4.png"
           alt="iglesia"
           className="h-full w-full object-cover"

@@ -10,8 +10,11 @@ function App() {
       if (!finished) {
         window.scrollTo(0, y);
         y += 1;
-        const final = document.body.scrollHeight > window.innerHeight ?  document.body.scrollHeight - window.innerHeight : document.body.scrollHeight;
- 
+        const final =
+          document.body.scrollHeight > window.innerHeight
+            ? document.body.scrollHeight - window.innerHeight
+            : document.body.scrollHeight;
+
         if (y < final) {
           requestAnimationFrame(scrollDown);
         } else {
@@ -23,8 +26,24 @@ function App() {
   }, []);
 
   document.addEventListener("scroll", () => {
+    console.log("aparezco scroll");
     setFinished(() => true);
-  })
+  });
+
+  document.addEventListener("click", () => {
+    console.log("aparezco click");
+    setFinished(() => true);
+  });
+
+  document.addEventListener("scrollend", () => {
+    console.log("aparezco scrollend");
+    setFinished(() => true);
+  });
+
+  document.addEventListener("touchmove", () => {
+    console.log("aparezco touchmove");
+    setFinished(() => true);
+  });
 
   return (
     <div

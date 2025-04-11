@@ -10,11 +10,11 @@ function App() {
       if (!finished) {
         window.scrollTo(0, y);
         y += 1;
-        const main = document.getElementById("main");
+        const main = document.getElementById("root");
         console.log("Y:", y);
-        console.log("main off height", main?.offsetHeight);
-        console.log("main client height", main?.clientHeight);
-        console.log("main height", main?.scrollHeight);
+        console.log("root off height", main?.offsetHeight);
+        console.log("root client height", main?.clientHeight);
+        console.log("root height", main?.scrollHeight);
         if (y < document.body.scrollHeight) {
           requestAnimationFrame(scrollDown);
         } else {

@@ -12,6 +12,8 @@ function App() {
         y += 1;
         const main = document.getElementById("main");
         console.log("Y:", y);
+        console.log("main off height", main?.offsetHeight);
+        console.log("main client height", main?.clientHeight);
         console.log("main height", main?.scrollHeight);
         if (y < document.body.scrollHeight) {
           requestAnimationFrame(scrollDown);

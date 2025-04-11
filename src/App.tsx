@@ -19,7 +19,7 @@ function App() {
       <BackgroundMusic />
       <div className="flex flex-col items-center justify-center h-full w-full">
         <img
-          src="/public/1.png"
+          src="/1.png"
           alt="iglesia"
           className="h-full w-full object-cover"
         />
@@ -50,14 +50,14 @@ function App() {
       <Galeria />
       <div className="flex flex-col items-center justify-center h-full w-full">
         <img
-          src="/public/3.png"
+          src="/3.png"
           alt="iglesia"
           className="h-full w-full object-cover"
         />
       </div>
       <div className="flex flex-col items-center justify-center h-full w-full">
         <img
-          src="/public/4.png"
+          src="/4.png"
           alt="iglesia"
           className="h-full w-full object-cover"
         />
